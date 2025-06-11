@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+codedoc/__init__.py
+codedoc/ai.py
+codedoc/cli.py
+codedoc/core.py
+codedoc/parser.py
+codedoc_ai.egg-info/PKG-INFO
+codedoc_ai.egg-info/SOURCES.txt
+codedoc_ai.egg-info/dependency_links.txt
+codedoc_ai.egg-info/entry_points.txt
+codedoc_ai.egg-info/requires.txt
+codedoc_ai.egg-info/top_level.txt
+tests/test_cli.py
+tests/test_core.py
+tests/test_parser.py

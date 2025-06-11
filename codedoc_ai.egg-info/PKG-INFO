@@ -1,0 +1,116 @@
+Metadata-Version: 2.4
+Name: codedoc-ai
+Version: 0.1.0
+Summary: 🚀 Smart Documentation Generator with AI-powered examples
+Author-email: CodeDoc AI Team <hello@codedoc-ai.com>
+Maintainer-email: CodeDoc AI Team <hello@codedoc-ai.com>
+License: MIT License
+        
+        Copyright (c) 2024 CodeDoc AI
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE. 
+Project-URL: Homepage, https://github.com/codedoc-ai/codedoc-ai
+Project-URL: Documentation, https://codedoc-ai.github.io/codedoc-ai/
+Project-URL: Repository, https://github.com/codedoc-ai/codedoc-ai.git
+Project-URL: Issues, https://github.com/codedoc-ai/codedoc-ai/issues
+Project-URL: Changelog, https://github.com/codedoc-ai/codedoc-ai/blob/main/CHANGELOG.md
+Keywords: documentation,ai,python,code-generation,documentation-generator,automated-documentation,openai,ast,code-analysis
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Documentation
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Operating System :: OS Independent
+Classifier: Environment :: Console
+Classifier: Environment :: Web Environment
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: click>=8.0.0
+Requires-Dist: openai>=1.0.0
+Requires-Dist: jinja2>=3.1.0
+Requires-Dist: rich>=13.0.0
+Requires-Dist: markdown>=3.4.0
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: typing_extensions>=4.0.0
+Requires-Dist: astunparse>=1.6.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.0.0; extra == "dev"
+Requires-Dist: black>=22.0.0; extra == "dev"
+Requires-Dist: isort>=5.10.0; extra == "dev"
+Requires-Dist: flake8>=4.0.0; extra == "dev"
+Requires-Dist: mypy>=0.950; extra == "dev"
+Requires-Dist: bandit>=1.7.0; extra == "dev"
+Requires-Dist: safety>=2.0.0; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: mkdocs>=1.4.0; extra == "docs"
+Requires-Dist: mkdocs-material>=8.0.0; extra == "docs"
+Requires-Dist: mkdocstrings>=0.19.0; extra == "docs"
+Dynamic: license-file
+
+# 🚀 CodeDoc AI - Smart Documentation Generator
+
+**The Future of Code Documentation is Here!**
+
+Automatically generate beautiful, interactive documentation with AI-powered examples for any Python codebase.
+
+## ✨ Features
+
+- 🤖 **AI-Powered Examples** - Generates real-world usage examples
+- 📚 **Interactive Documentation** - Beautiful HTML/Markdown output
+- ⚡ **Lightning Fast** - Parses your code in seconds
+- 🎯 **Smart Analysis** - Understands context and generates relevant examples
+- 🌐 **Multiple Languages** - Starting with Python, expanding to more languages
+
+## 🎯 Vision
+
+Making documentation so good that developers actually want to read it!
+
+## 🚀 Quick Start
+
+```bash
+pip install codedoc-ai
+codedoc generate ./your_project
+```
+
+## 💡 Example
+
+**Input Code:**
+```python
+def calculate_discount(price, discount_percent):
+    """Calculate discount amount"""
+    return price * (discount_percent / 100)
+```
+
+**Generated Documentation:**
+- Beautiful formatted docs
+- Real usage examples
+- Parameter explanations
+- Edge case handling
+
+---
+
+*Built with ❤️ for developers worldwide* 🌍 

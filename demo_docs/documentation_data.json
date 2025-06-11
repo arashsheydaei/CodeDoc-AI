@@ -1,0 +1,350 @@
+{
+  "metadata": {
+    "generated_at": "2025-06-12T00:51:30.043030",
+    "generator": "CodeDoc AI",
+    "version": "0.1.0"
+  },
+  "summary": {
+    "total_functions": 13,
+    "total_classes": 2,
+    "total_items": 15
+  },
+  "functions": [
+    {
+      "name": "calculate_discount",
+      "args": [
+        "price",
+        "discount_percent"
+      ],
+      "docstring": "Calculate the discount amount for a given price and percentage.\n\nArgs:\n    price: The original price\n    discount_percent: Discount percentage (0-100)\n    \nReturns:\n    The discount amount",
+      "enhanced_docstring": "Calculate the discount amount for a given price and percentage.\n\nArgs:\n    price: The original price\n    discount_percent: Discount percentage (0-100)\n    \nReturns:\n    The discount amount",
+      "line_number": 12,
+      "return_annotation": "float",
+      "arg_annotations": {
+        "price": "float",
+        "discount_percent": "float"
+      },
+      "ai_content": {}
+    },
+    {
+      "name": "fibonacci_sequence",
+      "args": [
+        "n"
+      ],
+      "docstring": "Generate Fibonacci sequence up to n numbers.",
+      "enhanced_docstring": "Generate Fibonacci sequence up to n numbers.",
+      "line_number": 28,
+      "return_annotation": "List[int]",
+      "arg_annotations": {
+        "n": "int"
+      },
+      "ai_content": {}
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "precision"
+      ],
+      "docstring": "Initialize calculator with specified precision.",
+      "enhanced_docstring": "Initialize calculator with specified precision.",
+      "line_number": 47,
+      "return_annotation": null,
+      "arg_annotations": {
+        "precision": "int"
+      },
+      "ai_content": {}
+    },
+    {
+      "name": "add",
+      "args": [
+        "self",
+        "a",
+        "b"
+      ],
+      "docstring": "Add two numbers.",
+      "enhanced_docstring": "Add two numbers.",
+      "line_number": 52,
+      "return_annotation": "float",
+      "arg_annotations": {
+        "a": "float",
+        "b": "float"
+      },
+      "ai_content": {}
+    },
+    {
+      "name": "multiply",
+      "args": [
+        "self",
+        "a",
+        "b"
+      ],
+      "docstring": "Multiply two numbers.",
+      "enhanced_docstring": "Multiply two numbers.",
+      "line_number": 58,
+      "return_annotation": "float",
+      "arg_annotations": {
+        "a": "float",
+        "b": "float"
+      },
+      "ai_content": {}
+    },
+    {
+      "name": "power",
+      "args": [
+        "self",
+        "base",
+        "exponent"
+      ],
+      "docstring": "Calculate base raised to the power of exponent.",
+      "enhanced_docstring": "Calculate base raised to the power of exponent.",
+      "line_number": 64,
+      "return_annotation": "float",
+      "arg_annotations": {
+        "base": "float",
+        "exponent": "float"
+      },
+      "ai_content": {}
+    },
+    {
+      "name": "get_history",
+      "args": [
+        "self"
+      ],
+      "docstring": "Get calculation history.",
+      "enhanced_docstring": "Get calculation history.",
+      "line_number": 70,
+      "return_annotation": "List[str]",
+      "arg_annotations": {},
+      "ai_content": {}
+    },
+    {
+      "name": "clear_history",
+      "args": [
+        "self"
+      ],
+      "docstring": "Clear calculation history.",
+      "enhanced_docstring": "Clear calculation history.",
+      "line_number": 74,
+      "return_annotation": "None",
+      "arg_annotations": {},
+      "ai_content": {}
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ],
+      "docstring": null,
+      "enhanced_docstring": null,
+      "line_number": 82,
+      "return_annotation": null,
+      "arg_annotations": {},
+      "ai_content": {}
+    },
+    {
+      "name": "add_data",
+      "args": [
+        "self",
+        "values"
+      ],
+      "docstring": "Add new data points.",
+      "enhanced_docstring": "Add new data points.",
+      "line_number": 85,
+      "return_annotation": "None",
+      "arg_annotations": {
+        "values": "List[float]"
+      },
+      "ai_content": {}
+    },
+    {
+      "name": "calculate_mean",
+      "args": [
+        "self"
+      ],
+      "docstring": "Calculate the arithmetic mean of the data.",
+      "enhanced_docstring": "Calculate the arithmetic mean of the data.",
+      "line_number": 89,
+      "return_annotation": "Optional[float]",
+      "arg_annotations": {},
+      "ai_content": {}
+    },
+    {
+      "name": "calculate_median",
+      "args": [
+        "self"
+      ],
+      "docstring": "Calculate the median of the data.",
+      "enhanced_docstring": "Calculate the median of the data.",
+      "line_number": 95,
+      "return_annotation": "Optional[float]",
+      "arg_annotations": {},
+      "ai_content": {}
+    },
+    {
+      "name": "get_summary",
+      "args": [
+        "self"
+      ],
+      "docstring": "Get a summary of the data statistics.",
+      "enhanced_docstring": "Get a summary of the data statistics.",
+      "line_number": 108,
+      "return_annotation": "dict",
+      "arg_annotations": {},
+      "ai_content": {}
+    }
+  ],
+  "classes": [
+    {
+      "name": "Calculator",
+      "docstring": "A simple calculator class with basic mathematical operations.",
+      "enhanced_docstring": "A simple calculator class with basic mathematical operations.",
+      "line_number": 44,
+      "bases": [],
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "precision"
+          ],
+          "docstring": "Initialize calculator with specified precision.",
+          "line_number": 47,
+          "return_annotation": null,
+          "arg_annotations": {
+            "precision": "int"
+          }
+        },
+        {
+          "name": "add",
+          "args": [
+            "self",
+            "a",
+            "b"
+          ],
+          "docstring": "Add two numbers.",
+          "line_number": 52,
+          "return_annotation": "float",
+          "arg_annotations": {
+            "a": "float",
+            "b": "float"
+          }
+        },
+        {
+          "name": "multiply",
+          "args": [
+            "self",
+            "a",
+            "b"
+          ],
+          "docstring": "Multiply two numbers.",
+          "line_number": 58,
+          "return_annotation": "float",
+          "arg_annotations": {
+            "a": "float",
+            "b": "float"
+          }
+        },
+        {
+          "name": "power",
+          "args": [
+            "self",
+            "base",
+            "exponent"
+          ],
+          "docstring": "Calculate base raised to the power of exponent.",
+          "line_number": 64,
+          "return_annotation": "float",
+          "arg_annotations": {
+            "base": "float",
+            "exponent": "float"
+          }
+        },
+        {
+          "name": "get_history",
+          "args": [
+            "self"
+          ],
+          "docstring": "Get calculation history.",
+          "line_number": 70,
+          "return_annotation": "List[str]",
+          "arg_annotations": {}
+        },
+        {
+          "name": "clear_history",
+          "args": [
+            "self"
+          ],
+          "docstring": "Clear calculation history.",
+          "line_number": 74,
+          "return_annotation": "None",
+          "arg_annotations": {}
+        }
+      ],
+      "ai_content": {}
+    },
+    {
+      "name": "DataProcessor",
+      "docstring": "Process and analyze data with various statistical operations.",
+      "enhanced_docstring": "Process and analyze data with various statistical operations.",
+      "line_number": 79,
+      "bases": [],
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ],
+          "docstring": null,
+          "line_number": 82,
+          "return_annotation": null,
+          "arg_annotations": {}
+        },
+        {
+          "name": "add_data",
+          "args": [
+            "self",
+            "values"
+          ],
+          "docstring": "Add new data points.",
+          "line_number": 85,
+          "return_annotation": "None",
+          "arg_annotations": {
+            "values": "List[float]"
+          }
+        },
+        {
+          "name": "calculate_mean",
+          "args": [
+            "self"
+          ],
+          "docstring": "Calculate the arithmetic mean of the data.",
+          "line_number": 89,
+          "return_annotation": "Optional[float]",
+          "arg_annotations": {}
+        },
+        {
+          "name": "calculate_median",
+          "args": [
+            "self"
+          ],
+          "docstring": "Calculate the median of the data.",
+          "line_number": 95,
+          "return_annotation": "Optional[float]",
+          "arg_annotations": {}
+        },
+        {
+          "name": "get_summary",
+          "args": [
+            "self"
+          ],
+          "docstring": "Get a summary of the data statistics.",
+          "line_number": 108,
+          "return_annotation": "dict",
+          "arg_annotations": {}
+        }
+      ],
+      "ai_content": {}
+    }
+  ]
+}

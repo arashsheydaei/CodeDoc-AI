@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo.py - CodeDoc AI</title>
+    <style>
+        body { font-family: -apple-system, 'Segoe UI', sans-serif; margin: 40px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px; }
+        h2 { color: #1e40af; margin-top: 30px; }
+        h3 { color: #3b82f6; }
+        .function, .class { background: #f8fafc; border-left: 4px solid #3b82f6; padding: 20px; margin: 20px 0; border-radius: 5px; }
+        .docstring { color: #6b7280; margin: 10px 0; font-style: italic; }
+        .params { background: #ecfdf5; padding: 10px; border-radius: 5px; margin: 10px 0; }
+        .code { background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: 'SF Mono', Monaco, monospace; }
+        .stats { background: #dbeafe; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .tag { background: #3b82f6; color: white; padding: 2px 6px; border-radius: 3px; font-size: 12px; margin-right: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 demo.py</h1>
+            <div class="stats">
+                <span class="tag">PYTHON</span>
+                <span class="tag">2 Functions</span>
+                <span class="tag">2 Classes</span>
+                <span class="tag">Generated: 2025-06-12 01:24</span>
+            </div>
+        </header>
+        
+        <main>
+        <h2>🔧 Functions</h2>
+        <div class="function">
+            <h3>⚡ calculate_discount()</h3>
+        <div class="docstring">"Calculate the discount amount for a given price and percentage.
+
+Args:
+    price: The original price
+    discount_percent: Discount percentage (0-100)
+    
+Returns:
+    The discount amount"</div><div class="code">
+
+def calculate_discount(price: float, discount_percent: float) -&gt; float:
+    'Calculate the discount amount for a given price and percentage.\n    \n    Args:\n        price: The original price\n        discount_percent: Discount percentage (0-100)\n        \n    Returns:\n        The discount amount\n    '
+    if ((discount_percent &lt; 0) or (discount_percent &gt; 100)):
+        raise ValueError('Discount percentage must be between 0 and 100')
+    return (price * (discount_percent / 100))
+</div></div>
+        <div class="function">
+            <h3>⚡ fibonacci_sequence()</h3>
+        <div class="docstring">"Generate Fibonacci sequence up to n numbers."</div><div class="code">
+
+def fibonacci_sequence(n: int) -&gt; List[int]:
+    'Generate Fibonacci sequence up to n numbers.'
+    if (n &lt;= 0):
+        return []
+    elif (n == 1):
+        return [0]
+    elif (n == 2):
+        return [0, 1]
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append((fib[(i - 1)] + fib[(i - 2)]))
+    return fib
+</div></div><h2>🏗️ Classes</h2>
+        <div class="class">
+            <h3>🏗️ Calculator</h3>
+        <div class="docstring">"A simple calculator class with basic mathematical operations."</div><div class="params"><strong>Methods (6):</strong> add, subtract, multiply, divide, get_history, clear_history</div><div class="code">
+
+class Calculator():
+    'A simple calculator class with basic mathematical operations.'
+
+    def __init__(self, precision: int=2):
+        'Initialize calculator with specified precision.'
+        self.precision = precision
+        self.history = []
+
+    def add(self, a: float, b: float) -&gt; float:
+        'Add two numbers.'
+        result = round((a + b), self.precision)
+        self.history.append(f'{a} + {b} = {result}')
+        return result
+
+    def subtract(self, a: float, b: float) -&gt; float:
+        'Subtract second number from first.'
+        result = round((a - b), self.precision)
+        self.history.append(f'{a} - {b} = {result}')
+        return result
+
+    def multiply(self, a: float, b: float) -&gt; float:
+        'Multiply two numbers.'
+        result = round((a * b), self.precision)
+        self.history.append(f'{a} * {b} = {result}')
+        return result
+
+    def divide(self, a: float, b: float) -&gt; float:
+        'Divide first number by second.'
+        if (b == 0):
+            raise ValueError('Cannot divide by zero')
+        result = round((a / b), self.precision)
+        self.history.append(f'{a} / {b} = {result}')
+        return result
+
+    def get_history(self) -&gt; List[str]:
+        'Get calculation history.'
+        return self.history.copy()
+
+    def clear_history(self) -&gt; None:
+        'Clear calculation history.'
+        self.history.clear()
+</div></div>
+        <div class="class">
+            <h3>🏗️ DataProcessor</h3>
+        <div class="docstring">"Advanced data processor with statistical operations."</div><div class="params"><strong>Methods (4):</strong> calculate_mean, calculate_median, store_data, retrieve_data</div><div class="code">
+
+class DataProcessor(Calculator):
+    'Advanced data processor with statistical operations.'
+
+    def __init__(self, precision: int=2):
+        'Initialize data processor.'
+        super().__init__(precision)
+        self.data_store = {}
+
+    def calculate_mean(self, numbers: List[float]) -&gt; float:
+        'Calculate arithmetic mean of numbers.'
+        if (not numbers):
+            raise ValueError('Cannot calculate mean of empty list')
+        return (sum(numbers) / len(numbers))
+
+    def calculate_median(self, numbers: List[float]) -&gt; float:
+        'Calculate median of numbers.'
+        if (not numbers):
+            raise ValueError('Cannot calculate median of empty list')
+        sorted_nums = sorted(numbers)
+        n = len(sorted_nums)
+        if ((n % 2) == 0):
+            return ((sorted_nums[((n // 2) - 1)] + sorted_nums[(n // 2)]) / 2)
+        return sorted_nums[(n // 2)]
+
+    def store_data(self, key: str, value: any) -&gt; None:
+        'Store data with a key.'
+        self.data_store[key] = value
+
+    def retrieve_data(self, key: str) -&gt; any:
+        'Retrieve stored data by key.'
+        return self.data_store.get(key)
+</div></div>
+        </main>
+        
+        <footer style="margin-top: 40px; text-align: center; color: #6b7280; border-top: 1px solid #e5e7eb; padding-top: 20px;">
+            <p>Generated by <strong>CodeDoc AI</strong> 🚀 - Smart Documentation Generator</p>
+        </footer>
+    </div>
+</body>
+</html>
+        

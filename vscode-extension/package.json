@@ -1,0 +1,198 @@
+{
+  "name": "codedoc-ai",
+  "displayName": "CodeDoc AI - Smart Documentation Generator",
+  "description": "🚀 AI-powered documentation generator with real-time preview and intelligent suggestions",
+  "version": "1.0.0",
+  "publisher": "codedoc-ai",
+  "icon": "assets/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codedoc-ai/vscode-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/codedoc-ai/vscode-extension/issues"
+  },
+  "homepage": "https://codedoc-ai.com",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "Snippets",
+    "Formatters",
+    "Machine Learning"
+  ],
+  "keywords": [
+    "documentation",
+    "ai",
+    "python",
+    "javascript",
+    "typescript",
+    "docstring",
+    "comments",
+    "generator",
+    "assistant"
+  ],
+  "activationEvents": [
+    "onLanguage:python",
+    "onLanguage:javascript",
+    "onLanguage:typescript"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codedoc.generateDocumentation",
+        "title": "🚀 Generate Documentation",
+        "category": "CodeDoc AI"
+      },
+      {
+        "command": "codedoc.showPreview",
+        "title": "👀 Show Live Preview",
+        "category": "CodeDoc AI"
+      },
+      {
+        "command": "codedoc.enhanceDocstring",
+        "title": "🤖 Enhance Docstring",
+        "category": "CodeDoc AI"
+      },
+      {
+        "command": "codedoc.analyzeCode",
+        "title": "🔍 Analyze Code",
+        "category": "CodeDoc AI"
+      },
+      {
+        "command": "codedoc.generateExamples",
+        "title": "💡 Generate Examples",
+        "category": "CodeDoc AI"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorLangId == python || editorLangId == javascript || editorLangId == typescript",
+          "command": "codedoc.generateDocumentation",
+          "group": "1_modification"
+        },
+        {
+          "when": "editorLangId == python || editorLangId == javascript || editorLangId == typescript",
+          "command": "codedoc.enhanceDocstring",
+          "group": "1_modification"
+        }
+      ],
+      "editor/title": [
+        {
+          "when": "editorLangId == python || editorLangId == javascript || editorLangId == typescript",
+          "command": "codedoc.showPreview",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "codedoc.generateDocumentation",
+        "key": "ctrl+shift+d",
+        "mac": "cmd+shift+d",
+        "when": "editorTextFocus && (editorLangId == python || editorLangId == javascript || editorLangId == typescript)"
+      },
+      {
+        "command": "codedoc.showPreview",
+        "key": "ctrl+shift+p",
+        "mac": "cmd+shift+p",
+        "when": "editorTextFocus && (editorLangId == python || editorLangId == javascript || editorLangId == typescript)"
+      },
+      {
+        "command": "codedoc.enhanceDocstring",
+        "key": "ctrl+shift+e",
+        "mac": "cmd+shift+e",
+        "when": "editorTextFocus && (editorLangId == python || editorLangId == javascript || editorLangId == typescript)"
+      }
+    ],
+    "configuration": {
+      "title": "CodeDoc AI",
+      "properties": {
+        "codedoc.aiProvider": {
+          "type": "string",
+          "default": "openai",
+          "enum": ["openai", "claude", "gemini", "ollama"],
+          "description": "AI provider for documentation generation"
+        },
+        "codedoc.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for AI provider (can also be set via environment variable)"
+        },
+        "codedoc.outputFormat": {
+          "type": "string",
+          "default": "markdown",
+          "enum": ["html", "markdown", "json"],
+          "description": "Default output format for generated documentation"
+        },
+        "codedoc.includePrivate": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include private methods and functions in documentation"
+        },
+        "codedoc.autoSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically save generated documentation to file"
+        },
+        "codedoc.realTimePreview": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable real-time documentation preview"
+        },
+        "codedoc.aiSuggestions": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show AI-powered suggestions while typing"
+        }
+      }
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "codedocExplorer",
+          "name": "CodeDoc AI",
+          "when": "codedoc.isActive"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codedoc",
+          "title": "CodeDoc AI",
+          "icon": "$(book)"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0",
+    "typescript": "^5.0.4",
+    "@vscode/test-electron": "^2.3.0",
+    "@vscode/vsce": "^2.19.0"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "marked": "^5.0.0",
+    "highlight.js": "^11.8.0"
+  }
+} 

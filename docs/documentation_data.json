@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "generated_at": "2025-06-12T01:01:34.474426",
+    "generator": "CodeDoc AI",
+    "version": "0.1.0"
+  },
+  "summary": {
+    "total_functions": 1,
+    "total_classes": 0,
+    "total_items": 1
+  },
+  "functions": [
+    {
+      "name": "test",
+      "args": [],
+      "docstring": null,
+      "enhanced_docstring": null,
+      "line_number": 1,
+      "return_annotation": null,
+      "arg_annotations": {},
+      "ai_content": {}
+    }
+  ],
+  "classes": []
+}

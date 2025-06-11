@@ -1,0 +1,123 @@
+name: 🚀 CodeDoc AI - CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: 🐍 Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: 📦 Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+        pip install pytest pytest-cov
+    
+    - name: 🧪 Run tests
+      run: |
+        pytest tests/ -v --cov=codedoc --cov-report=xml --cov-report=term-missing
+    
+    - name: 📊 Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: 📦 Install linting tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install black isort flake8 mypy
+        pip install -e .
+    
+    - name: 🖤 Check code formatting with Black
+      run: black --check --diff codedoc/ tests/
+    
+    - name: 📑 Check import sorting with isort
+      run: isort --check-only --diff codedoc/ tests/
+    
+    - name: 🔍 Lint with flake8
+      run: flake8 codedoc/ tests/ --max-line-length=88 --extend-ignore=E203,W503
+    
+    - name: 🏷️ Type check with mypy
+      run: mypy codedoc/ --ignore-missing-imports
+
+  demo-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: 📦 Install CodeDoc AI
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+    
+    - name: 🎭 Test demo command
+      run: |
+        codedoc demo
+        ls -la demo_docs/
+        test -f demo_docs/documentation.html
+        test -f demo_docs/documentation.md
+    
+    - name: 📄 Test parse command
+      run: |
+        echo 'def hello(): """Say hello"""; return "world"' > test.py
+        codedoc parse test.py
+    
+    - name: 🔧 Test generate command
+      run: |
+        echo 'def sample(): """A sample function"""; pass' > sample.py
+        codedoc generate sample.py --output test_output --no-ai
+        test -f test_output/documentation.html
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: 🛡️ Run security scan with bandit
+      run: |
+        pip install bandit
+        bandit -r codedoc/ -f json -o bandit-report.json || true
+    
+    - name: 🔒 Check for vulnerabilities with safety
+      run: |
+        pip install safety
+        safety check --json || true 

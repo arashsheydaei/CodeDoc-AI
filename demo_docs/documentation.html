@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 CodeDoc AI - Documentation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>🚀 CodeDoc AI Documentation</h1>
+        <p>Generated on 2025-06-12 00:51:30</p>
+        <div class="stats">
+            <span>📋 13 Functions</span>
+            <span>🏗️ 2 Classes</span>
+            <span>🤖 AI Enhanced</span>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="functions-section">
+            <h2>📋 Functions</h2>
+            
+            <div class="code-item">
+                <h3>calculate_discount</h3>
+                <div class="docstring">Calculate the discount amount for a given price and percentage.
+
+Args:
+    price: The original price
+    discount_percent: Discount percentage (0-100)
+    
+Returns:
+    The discount amount</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> price, discount_percent
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def calculate_discount(price: float, discount_percent: float) -> float:
+    'Calculate the discount amount for a given price and percentage.\n    \n    Args:\n        price: The original price\n        discount_percent: Discount percentage (0-100)\n        \n    Returns:\n        The discount amount\n    '
+    if ((discount_percent < 0) or (discount_percent > 100)):
+        raise ValueError('Discount percentage must be between 0 and 100')
+    return (price * (discount_percent / 100))
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>fibonacci_sequence</h3>
+                <div class="docstring">Generate Fibonacci sequence up to n numbers.</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> n
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def fibonacci_sequence(n: int) -> List[int]:
+    'Generate Fibonacci sequence up to n numbers.'
+    if (n <= 0):
+        return []
+    elif (n == 1):
+        return [0]
+    elif (n == 2):
+        return [0, 1]
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append((fib[(i - 1)] + fib[(i - 2)]))
+    return fib
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>__init__</h3>
+                <div class="docstring">Initialize calculator with specified precision.</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> self, precision
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def __init__(self, precision: int=2):
+    'Initialize calculator with specified precision.'
+    self.precision = precision
+    self.history = []
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>add</h3>
+                <div class="docstring">Add two numbers.</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> self, a, b
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def add(self, a: float, b: float) -> float:
+    'Add two numbers.'
+    result = round((a + b), self.precision)
+    self.history.append(f'{a} + {b} = {result}')
+    return result
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>multiply</h3>
+                <div class="docstring">Multiply two numbers.</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> self, a, b
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def multiply(self, a: float, b: float) -> float:
+    'Multiply two numbers.'
+    result = round((a * b), self.precision)
+    self.history.append(f'{a} × {b} = {result}')
+    return result
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>power</h3>
+                <div class="docstring">Calculate base raised to the power of exponent.</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> self, base, exponent
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def power(self, base: float, exponent: float) -> float:
+    'Calculate base raised to the power of exponent.'
+    result = round(math.pow(base, exponent), self.precision)
+    self.history.append(f'{base}^{exponent} = {result}')
+    return result
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>get_history</h3>
+                <div class="docstring">Get calculation history.</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> self
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def get_history(self) -> List[str]:
+    'Get calculation history.'
+    return self.history.copy()
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>clear_history</h3>
+                <div class="docstring">Clear calculation history.</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> self
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def clear_history(self) -> None:
+    'Clear calculation history.'
+    self.history.clear()
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>__init__</h3>
+                <div class="docstring">No documentation</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> self
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def __init__(self):
+    self.data = []
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>add_data</h3>
+                <div class="docstring">Add new data points.</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> self, values
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def add_data(self, values: List[float]) -> None:
+    'Add new data points.'
+    self.data.extend(values)
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>calculate_mean</h3>
+                <div class="docstring">Calculate the arithmetic mean of the data.</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> self
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def calculate_mean(self) -> Optional[float]:
+    'Calculate the arithmetic mean of the data.'
+    if (not self.data):
+        return None
+    return (sum(self.data) / len(self.data))
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>calculate_median</h3>
+                <div class="docstring">Calculate the median of the data.</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> self
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def calculate_median(self) -> Optional[float]:
+    'Calculate the median of the data.'
+    if (not self.data):
+        return None
+    sorted_data = sorted(self.data)
+    n = len(sorted_data)
+    if ((n % 2) == 0):
+        return ((sorted_data[((n // 2) - 1)] + sorted_data[(n // 2)]) / 2)
+    else:
+        return sorted_data[(n // 2)]
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>get_summary</h3>
+                <div class="docstring">Get a summary of the data statistics.</div>
+                
+                <div class="signature">
+                    <strong>Parameters:</strong> self
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+def get_summary(self) -> dict:
+    'Get a summary of the data statistics.'
+    if (not self.data):
+        return {'error': 'No data available'}
+    return {'count': len(self.data), 'mean': self.calculate_mean(), 'median': self.calculate_median(), 'min': min(self.data), 'max': max(self.data), 'range': (max(self.data) - min(self.data))}
+</code></pre>
+                </details>
+            </div>
+            
+        </section>
+        
+        
+        
+        <section class="classes-section">
+            <h2>🏗️ Classes</h2>
+            
+            <div class="code-item">
+                <h3>Calculator</h3>
+                <div class="docstring">A simple calculator class with basic mathematical operations.</div>
+                
+                
+                
+                
+                
+                
+                <div class="methods">
+                    <h4>🔧 Methods</h4>
+                    <ul>
+                    
+                        <li><strong>__init__</strong>(self, precision)
+                         - Initialize calculator with specified precision.</li>
+                    
+                        <li><strong>add</strong>(self, a, b)
+                         - Add two numbers.</li>
+                    
+                        <li><strong>multiply</strong>(self, a, b)
+                         - Multiply two numbers.</li>
+                    
+                        <li><strong>power</strong>(self, base, exponent)
+                         - Calculate base raised to the power of exponent.</li>
+                    
+                        <li><strong>get_history</strong>(self)
+                         - Get calculation history.</li>
+                    
+                        <li><strong>clear_history</strong>(self)
+                         - Clear calculation history.</li>
+                    
+                    </ul>
+                </div>
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+class Calculator():
+    'A simple calculator class with basic mathematical operations.'
+
+    def __init__(self, precision: int=2):
+        'Initialize calculator with specified precision.'
+        self.precision = precision
+        self.history = []
+
+    def add(self, a: float, b: float) -> float:
+        'Add two numbers.'
+        result = round((a + b), self.precision)
+        self.history.append(f'{a} + {b} = {result}')
+        return result
+
+    def multiply(self, a: float, b: float) -> float:
+        'Multiply two numbers.'
+        result = round((a * b), self.precision)
+        self.history.append(f'{a} × {b} = {result}')
+        return result
+
+    def power(self, base: float, exponent: float) -> float:
+        'Calculate base raised to the power of exponent.'
+        result = round(math.pow(base, exponent), self.precision)
+        self.history.append(f'{base}^{exponent} = {result}')
+        return result
+
+    def get_history(self) -> List[str]:
+        'Get calculation history.'
+        return self.history.copy()
+
+    def clear_history(self) -> None:
+        'Clear calculation history.'
+        self.history.clear()
+</code></pre>
+                </details>
+            </div>
+            
+            <div class="code-item">
+                <h3>DataProcessor</h3>
+                <div class="docstring">Process and analyze data with various statistical operations.</div>
+                
+                
+                
+                
+                
+                
+                <div class="methods">
+                    <h4>🔧 Methods</h4>
+                    <ul>
+                    
+                        <li><strong>__init__</strong>(self)
+                        </li>
+                    
+                        <li><strong>add_data</strong>(self, values)
+                         - Add new data points.</li>
+                    
+                        <li><strong>calculate_mean</strong>(self)
+                         - Calculate the arithmetic mean of the data.</li>
+                    
+                        <li><strong>calculate_median</strong>(self)
+                         - Calculate the median of the data.</li>
+                    
+                        <li><strong>get_summary</strong>(self)
+                         - Get a summary of the data statistics.</li>
+                    
+                    </ul>
+                </div>
+                
+                
+                <details class="source-code">
+                    <summary>📄 Source Code</summary>
+                    <pre><code class="language-python">
+
+class DataProcessor():
+    'Process and analyze data with various statistical operations.'
+
+    def __init__(self):
+        self.data = []
+
+    def add_data(self, values: List[float]) -> None:
+        'Add new data points.'
+        self.data.extend(values)
+
+    def calculate_mean(self) -> Optional[float]:
+        'Calculate the arithmetic mean of the data.'
+        if (not self.data):
+            return None
+        return (sum(self.data) / len(self.data))
+
+    def calculate_median(self) -> Optional[float]:
+        'Calculate the median of the data.'
+        if (not self.data):
+            return None
+        sorted_data = sorted(self.data)
+        n = len(sorted_data)
+        if ((n % 2) == 0):
+            return ((sorted_data[((n // 2) - 1)] + sorted_data[(n // 2)]) / 2)
+        else:
+            return sorted_data[(n // 2)]
+
+    def get_summary(self) -> dict:
+        'Get a summary of the data statistics.'
+        if (not self.data):
+            return {'error': 'No data available'}
+        return {'count': len(self.data), 'mean': self.calculate_mean(), 'median': self.calculate_median(), 'min': min(self.data), 'max': max(self.data), 'range': (max(self.data) - min(self.data))}
+</code></pre>
+                </details>
+            </div>
+            
+        </section>
+        
+    </main>
+    
+    <footer>
+        <p>Generated by <strong>🚀 CodeDoc AI</strong> - The future of code documentation!</p>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>
+        

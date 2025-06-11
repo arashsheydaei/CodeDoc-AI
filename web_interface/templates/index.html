@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeDoc AI - Smart Documentation Generator 🚀</title>
+    
+    <!-- Modern CSS Styling -->
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #10b981;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .main-content {
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: var(--background);
+            margin-bottom: 2rem;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .upload-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .preview {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            max-height: 500px;
+            overflow: auto;
+        }
+
+        .preview iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚀 CodeDoc AI</h1>
+            <p>Transform your code into beautiful documentation instantly</p>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
+                <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">📁</div>
+                <div style="font-size: 1.125rem; font-weight: 500; margin-bottom: 0.5rem;">
+                    Drag & drop your code file here
+                </div>
+                <div style="color: var(--text-light); margin-bottom: 1.5rem;">
+                    Supports Python (.py), JavaScript (.js), TypeScript (.ts)
+                </div>
+                <button class="upload-btn" onclick="document.getElementById('file-input').click()">
+                    Choose File
+                </button>
+                <input type="file" id="file-input" class="file-input" accept=".py,.js,.ts" onchange="handleFileSelect(event)">
+            </div>
+
+            <div class="options" style="margin-bottom: 2rem;">
+                <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                    <input type="checkbox" id="use-ai"> AI Enhancement
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" id="include-private"> Include Private Functions
+                </label>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary" onclick="generateDocumentation()" disabled id="generate-btn">
+                    Generate Documentation
+                </button>
+                <button class="btn btn-secondary" onclick="window.open('/demo', '_blank')">
+                    Try Demo
+                </button>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Generating your beautiful documentation...</p>
+            </div>
+
+            <div class="results" id="results">
+                <div class="preview" id="preview"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let selectedFile = null;
+
+        function dragOverHandler(ev) {
+            ev.preventDefault();
+        }
+
+        function dropHandler(ev) {
+            ev.preventDefault();
+            const files = ev.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        }
+
+        function handleFileSelect(event) {
+            const files = event.target.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        }
+
+        function handleFile(file) {
+            selectedFile = file;
+            document.querySelector('.upload-area div:nth-child(2)').textContent = `Selected: ${file.name}`;
+            document.getElementById('generate-btn').disabled = false;
+        }
+
+        async function generateDocumentation() {
+            if (!selectedFile) return;
+
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+            formData.append('use_ai', document.getElementById('use-ai').checked);
+            formData.append('include_private', document.getElementById('include-private').checked);
+
+            try {
+                const response = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('preview').innerHTML = 
+                        `<iframe srcdoc="${result.documentation.replace(/"/g, '&quot;')}"></iframe>`;
+                    document.getElementById('results').style.display = 'block';
+                } else {
+                    alert('Error: ' + result.detail);
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html> 
