@@ -311,7 +311,7 @@ class DataProcessor:
         result = generator.generate_documentation(
             source_path=str(demo_file),
             output_path="./demo_docs",
-            format_type="both"
+            output_format="html"
         )
         
         if result['status'] == 'success':

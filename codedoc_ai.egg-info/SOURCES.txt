@@ -5,7 +5,9 @@ codedoc/__init__.py
 codedoc/ai.py
 codedoc/cli.py
 codedoc/core.py
+codedoc/js_parser.py
 codedoc/parser.py
+codedoc/templates.py
 codedoc_ai.egg-info/PKG-INFO
 codedoc_ai.egg-info/SOURCES.txt
 codedoc_ai.egg-info/dependency_links.txt

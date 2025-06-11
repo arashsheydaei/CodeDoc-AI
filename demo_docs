@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>demo.py - CodeDoc AI</title>
+    <title>demo_module.py - CodeDoc AI</title>
     <style>
         body { font-family: -apple-system, 'Segoe UI', sans-serif; margin: 40px; background: #f5f5f5; }
         .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
@@ -22,7 +22,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>📚 demo.py</h1>
+            <h1>📚 demo_module.py</h1>
             <div class="stats">
                 <span class="tag">PYTHON</span>
                 <span class="tag">2 Functions</span>
@@ -69,7 +69,7 @@ def fibonacci_sequence(n: int) -&gt; List[int]:
 </div></div><h2>🏗️ Classes</h2>
         <div class="class">
             <h3>🏗️ Calculator</h3>
-        <div class="docstring">"A simple calculator class with basic mathematical operations."</div><div class="params"><strong>Methods (6):</strong> add, subtract, multiply, divide, get_history, clear_history</div><div class="code">
+        <div class="docstring">"A simple calculator class with basic mathematical operations."</div><div class="params"><strong>Methods (5):</strong> add, multiply, power, get_history, clear_history</div><div class="code">
 
 class Calculator():
     'A simple calculator class with basic mathematical operations.'
@@ -85,24 +85,16 @@ class Calculator():
         self.history.append(f'{a} + {b} = {result}')
         return result
 
-    def subtract(self, a: float, b: float) -&gt; float:
-        'Subtract second number from first.'
-        result = round((a - b), self.precision)
-        self.history.append(f'{a} - {b} = {result}')
-        return result
-
     def multiply(self, a: float, b: float) -&gt; float:
         'Multiply two numbers.'
         result = round((a * b), self.precision)
-        self.history.append(f'{a} * {b} = {result}')
+        self.history.append(f'{a} × {b} = {result}')
         return result
 
-    def divide(self, a: float, b: float) -&gt; float:
-        'Divide first number by second.'
-        if (b == 0):
-            raise ValueError('Cannot divide by zero')
-        result = round((a / b), self.precision)
-        self.history.append(f'{a} / {b} = {result}')
+    def power(self, base: float, exponent: float) -&gt; float:
+        'Calculate base raised to the power of exponent.'
+        result = round(math.pow(base, exponent), self.precision)
+        self.history.append(f'{base}^{exponent} = {result}')
         return result
 
     def get_history(self) -&gt; List[str]:
@@ -115,39 +107,40 @@ class Calculator():
 </div></div>
         <div class="class">
             <h3>🏗️ DataProcessor</h3>
-        <div class="docstring">"Advanced data processor with statistical operations."</div><div class="params"><strong>Methods (4):</strong> calculate_mean, calculate_median, store_data, retrieve_data</div><div class="code">
+        <div class="docstring">"Process and analyze data with various statistical operations."</div><div class="params"><strong>Methods (4):</strong> add_data, calculate_mean, calculate_median, get_summary</div><div class="code">
 
-class DataProcessor(Calculator):
-    'Advanced data processor with statistical operations.'
+class DataProcessor():
+    'Process and analyze data with various statistical operations.'
 
-    def __init__(self, precision: int=2):
-        'Initialize data processor.'
-        super().__init__(precision)
-        self.data_store = {}
+    def __init__(self):
+        self.data = []
 
-    def calculate_mean(self, numbers: List[float]) -&gt; float:
-        'Calculate arithmetic mean of numbers.'
-        if (not numbers):
-            raise ValueError('Cannot calculate mean of empty list')
-        return (sum(numbers) / len(numbers))
+    def add_data(self, values: List[float]) -&gt; None:
+        'Add new data points.'
+        self.data.extend(values)
 
-    def calculate_median(self, numbers: List[float]) -&gt; float:
-        'Calculate median of numbers.'
-        if (not numbers):
-            raise ValueError('Cannot calculate median of empty list')
-        sorted_nums = sorted(numbers)
-        n = len(sorted_nums)
+    def calculate_mean(self) -&gt; Optional[float]:
+        'Calculate the arithmetic mean of the data.'
+        if (not self.data):
+            return None
+        return (sum(self.data) / len(self.data))
+
+    def calculate_median(self) -&gt; Optional[float]:
+        'Calculate the median of the data.'
+        if (not self.data):
+            return None
+        sorted_data = sorted(self.data)
+        n = len(sorted_data)
         if ((n % 2) == 0):
-            return ((sorted_nums[((n // 2) - 1)] + sorted_nums[(n // 2)]) / 2)
-        return sorted_nums[(n // 2)]
+            return ((sorted_data[((n // 2) - 1)] + sorted_data[(n // 2)]) / 2)
+        else:
+            return sorted_data[(n // 2)]
 
-    def store_data(self, key: str, value: any) -&gt; None:
-        'Store data with a key.'
-        self.data_store[key] = value
-
-    def retrieve_data(self, key: str) -&gt; any:
-        'Retrieve stored data by key.'
-        return self.data_store.get(key)
+    def get_summary(self) -&gt; dict:
+        'Get a summary of the data statistics.'
+        if (not self.data):
+            return {'error': 'No data available'}
+        return {'count': len(self.data), 'mean': self.calculate_mean(), 'median': self.calculate_median(), 'min': min(self.data), 'max': max(self.data), 'range': (max(self.data) - min(self.data))}
 </div></div>
         </main>
         

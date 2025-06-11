@@ -303,4 +303,4 @@ if __name__ == "__main__":
     import uvicorn
     print("🚀 Starting CodeDoc AI Web Interface...")
     print("📱 Open http://localhost:8000 in your browser")
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True) 
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=False) 
